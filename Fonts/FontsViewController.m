@@ -30,6 +30,7 @@
     self.fontFamilies = [[UIFont familyNames] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         return [obj1 compare:obj2];
     }];
+    self.tableView.rowHeight = 52;
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,7 +71,7 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                       reuseIdentifier:CellIdentifier];
     }
     // Configure the cell...
@@ -78,6 +79,8 @@
     cell.textLabel.font = [UIFont fontWithName:fontName
                                           size:16];
     cell.textLabel.text = fontName;
+    cell.detailTextLabel.font = cell.textLabel.font;
+    cell.detailTextLabel.text = @"中文测试";
     
     return cell;
 }
